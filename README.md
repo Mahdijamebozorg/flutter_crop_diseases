@@ -10,8 +10,8 @@ A flutter deep learning application which can classify plants disease by scannin
 <p>&nbsp;</p>
 
 ## Deep learning Model
-  - Lite model which is a fully trained efficientNet_lite model on 23 classes
-  - Normal model which is a fully trained efficientNetB3 model on 23 classes
+  - Lite model which is a fully trained efficientNet_lite model on 23 classes (96% Accuracy)
+  - Normal model which is a fully trained efficientNetB3 model on 23 classes (99.7% Accuracy)
 
 <p>&nbsp;</p>
 
