@@ -7,13 +7,13 @@ A flutter deep learning application which can classify plant disease by scanning
   </a>
 </div>
 
-
-<center><img src="screenShots/home.png" width="300"></center>
-
 <p>&nbsp;</p>
 
 ## Live and image modes
   This app can scan leaf by the taken images and also live camera video!
+
+<center><img src="screenShots/image.jpg" width="300"></center>
+<center><img src="screenShots/live.jpg" width="300"></center>
 
 <p>&nbsp;</p>
 
