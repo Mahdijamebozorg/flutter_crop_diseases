@@ -1,5 +1,5 @@
 # Crop diseases
-A flutter deep learning application which can classify plant disease by scanning its leaf
+A flutter deep learning application which can classify plants disease by scanning leaves
 
 <div align="center">
   <a>
@@ -9,11 +9,20 @@ A flutter deep learning application which can classify plant disease by scanning
 
 <p>&nbsp;</p>
 
-## Live and image modes
-  This app can scan leaf by the taken images and also live camera video!
+## Deep learning Model
+  - Lite model which is a fully trained efficientNet_lite model on 23 classes
+  - Normal model which is a fully trained efficientNetB3 model on 23 classes
 
-<center><img src="screenShots/image.jpg" width="300"></center>
-<center><img src="screenShots/live.jpg" width="300"></center>
+<p>&nbsp;</p>
+
+## Scanning modes
+  - Live mode
+  <center><img src="screenShots/live.jpg" width="300"></center>
+
+  <p>&nbsp;</p>
+
+  - Image mode
+  <center><img src="screenShots/image.jpg" width="300"></center>
 
 <p>&nbsp;</p>
 
