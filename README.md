@@ -1,5 +1,5 @@
 # Crop diseases
-A flutter deep learning application which can classify plants disease by scanning leaves
+A flutter deep learning embedded application which can classify plants disease by scanning leaves
 
 <div align="center">
   <a>
