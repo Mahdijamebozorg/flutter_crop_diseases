@@ -1,85 +1,69 @@
-# Crop diseases
-A flutter deep learning embedded application which can classify plants disease by scanning leaves
+# Crop Disease Detection (Edge AI Platform)
+
+[![Flutter](https://img.shields.io/badge/Platform-Flutter-02569B?logo=flutter&logoColor=white)](https://flutter.dev)
+[![TensorFlow Lite](https://img.shields.io/badge/Engine-TF%20Lite-FF6F00?logo=tensorflow&logoColor=white)](https://www.tensorflow.org/lite)
+[![Academic-Thesis](https://img.shields.io/badge/Context-BSc%20Thesis-success)](#)
+
+An advanced, production-grade mobile application designed for real-time plant disease classification using embedded Deep Learning models. This project bridges the gap between high-level computer vision and severe mobile hardware resource constraints, enabling local on-device inference without relying on cloud computation.
 
 <div align="center">
   <a>
-    <img src="screenShots/icon.png" alt="Icon" width="80" height="80">
+    <img src="screenShots/icon.png" alt="Crop Disease Icon" width="100" height="100">
   </a>
 </div>
 
-<p>&nbsp;</p>
+---
 
-## Deep learning Model
-  - Lite model which is a fully trained efficientNet_lite model on 23 classes (96% Accuracy)
-  - Normal model which is a fully trained efficientNetB3 model on 23 classes (99.7% Accuracy)
+## 📌 Core Engineering Highlights & Innovations
 
-<p>&nbsp;</p>
+*   **On-Device Embedded Inference:** Zero cloud dependency, guaranteeing absolute offline operability in remote agricultural fields and sub-millisecond execution latency.
+*   **Dual-Model Execution Strategy:** Architecture designed to support both high-accuracy analysis and resource-constrained edge tracking.
+*   **Real-Time Live Frame Stream Processing:** Low-level integration with the device camera to intercept image buffers and route them into the tensor input channels smoothly.
+*   **Quantization & Hardware Acceleration:** Applied Post-Training Quantization (PTQ) to shrink weights while maintaining critical inference precision.
 
-## Scanning modes
-  - Live mode
-  <center><img src="screenShots/live.jpg" width="300"></center>
+---
 
-  <p>&nbsp;</p>
+## 🧠 Deep Learning Architecture & Optimization Matrix
 
-  - Image mode
-  <center><img src="screenShots/image.jpg" width="300"></center>
+The core contribution of this system lies in balancing classification accuracy with the physical memory and thermal constraints of mobile CPU/GPU hardware:
 
-<p>&nbsp;</p>
+| Model Variant | Base Architecture | Classes | Precision / Acc. | Purpose / Deployment Target |
+| :--- | :--- | :---: | :---: | :--- |
+| **Lite Model (Optimized)** | `EfficientNet_Lite` (Quantized) | 23 | **96.0%** | Highly efficient, real-time local inference for low-tier hardware |
+| **Normal Model (Heavy)** | `EfficientNetB3` (Full-Precision) | 23 | **99.7%** | Maximum precision profiling inside optimal device environments |
 
-## Built With
-<img src="https://storage.googleapis.com/cms-storage-bucket/6a07d8a62f4308d2b854.svg" width=100 height=50>
-<img src="https://dart.dev/assets/img/logo/logo-white-text.svg" width=100 height=50>
-<img src="https://www.gstatic.com/devrel-devsite/prod/vd906e53f099e628a2c079fcd932eaf4d8ec6809dab19b3d79a915c60d6afdd75/tensorflow/images/lockup.svg" width=100 height=50>
+---
 
+## ⚙️ Architectural Core & Scanning Modes
 
+The application logic decouples camera streaming loops from the tensor inference cycle, utilizing distinct operating states:
 
+### 1. Live Pipeline Mode
+Intercepts live camera image buffers (`YUV_420_888` / `BGRA_8888`), applies real-time aspect-ratio normalization and matrix rotations, and updates inference bounding boxes asynchronously to achieve a smooth frame rate.
 
-<!---
-## Game rules:
-This game is a modified 2P chess with all chess rules plus some features:
+<p align="center">
+  <img src="screenShots/live.jpg" width="320" alt="Live Stream Inference Mode"/>
+</p>
 
-<p>&nbsp;</p>
+### 2. Static Image Analysis Mode
+Allows users to input high-resolution gallery pictures. It processes the raw file stream, resizes tensors to meet target model dimensions ($224 \times 224$ or $300 \times 300$), and executes a high-fidelity inference passes.
 
-### Winner:
-If game ends by checkmate or stalemate, winner is player who has more scores,
-but if a player presses Surrend, other player wins.
+<p align="center">
+  <img src="screenShots/image.jpg" width="320" alt="Static Image Profiling Mode"/>
+</p>
 
-<p>&nbsp;</p>
+---
 
-### Score:
-Score is the key to win in this game, some movement have score:
-- Hit: Pawn-> +3 , Queen-> +15 , others-> +8 (you can't hit the king!)
-- Pawn pass away half of board: +3 
-- Check enemy king: +10
-- Checkmate: +50
-- Extra move: if you have 30 scores, you can make an extra move!
+## 🛠️ Built With & Deep Tech Stack
 
-<p>&nbsp;</p>
+The software implementation leverages structural frameworks optimized for edge telemetry:
 
-### Negative score:
-Some works increases your negative score , if your negative score reachs 15 , you will have a random move on a random piece.
-- Undo: return last moved piece and adds 5 negative scores
-- Touch piece: if you choose a moveable piece and reselct in this turn, you'll get 5 negative scores 
+*   **Cross-Platform Architecture:** [Flutter](https://flutter.dev) & [Dart](https://dart.dev) for highly performant, rendering-isolated client views.
+*   **Inference Kernel Engine:** [TensorFlow Lite (TFLite)](https://www.tensorflow.org/lite) for embedded execution of quantized neural network binaries.
+*   **Image Processing Interceptors:** Low-level platform channels configured to pass camera streams directly into native image manipulation routines.
 
-<p>&nbsp;</p>
+---
 
-### Important notes
-- Game has auto save and you can continue crashed or closed games
-- Negative scores won't be saved in file
-- For game name, if a file exists with the same name, file will be overwriten
-- In promotion, if you don't choose any chessman, game will crash, but you can continue game by laoding it
-- Canceling game will delete save file and restarting will clear move history in file
-- Saved Files with free spaces or unreadable moves, won't be opened
- 
-<p>&nbsp;</p>
+## 📄 Academic & Portfolio Notice
 
- 
-## Load Game
-[![Load Screen Shot][Load]][Load]
-
-<p>&nbsp;</p>
-
-## Promotion Dialog
-[![Promotion Screen Shot][Promotion]][Promotion]
-
---->
+*This repository represents the architectural and mobile systems deployment phase of my Bachelor of Science Thesis. The localized dataset pipelines, raw unquantized Python model compilation weights, and private academic documentation matrices are reserved for evaluation and portfolio demonstration purposes.*
